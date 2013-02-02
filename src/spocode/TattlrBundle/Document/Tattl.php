@@ -5,11 +5,6 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
  * @MongoDB\Document
- * @MongoDB\InheritanceType("SINGLE_COLLECTION")
- * @MongoDB\DiscriminatorField(fieldName="type")
- * @MongoDB\DiscriminatorMap({"abandondedCar"="AbandonedCar",
- *  "flood"="Flood", "graffito"="Graffito", "pothole","Pothole",
- *  "signalOut"="SignalOut"})
  */
 class Tattl
 {
@@ -49,6 +44,10 @@ class Tattl
      */
     protected $deviceId;
 
+    /**
+     * @MongoDB\string
+     */
+    protected $type;
 
 
     /**
@@ -191,5 +190,22 @@ class Tattl
     public function getDeviceId()
     {
         return $this->deviceId;
+    }
+
+    /**
+     * Set type
+     *
+     * @param type $type
+     * @return \Tattl
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+    public function getType()
+    {
+        return $this->type;
     }
 }

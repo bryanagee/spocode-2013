@@ -12,12 +12,22 @@ use spocode\TattlrBundle\Document\Tattl;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
+     * @Route("/tattls")
      * @Template()
      */
-    public function indexAction($name)
+    public function indexAction($tattlType)
     {
-        return array('name' => $name);
+        $dm = $this->get('doctrine.odm.mongodb.document_manager');
+        if ("Tattl" == $tattlType) {
+            $tattls = $dm->getRepository('Tattl');
+        } else {
+            $tattls = $dm->getRepository('Tattl')->findBy(['type' => $tattlType]);
+        }
+
+        foreach ($tattls as $tattl) {
+
+        }
+
     }
 
     /**
@@ -35,14 +45,14 @@ class DefaultController extends Controller
     }
 
      /**
-     * @Route("/{tattlType}")
+     * @Route("/tattl")
      * @Method({"POST"})
      */
-    public function postTattl($tattlType)
+    public function postTattl()
     {
-        $dm = $this->get('doctrine.odm.mongodb.default_document_manager');
+        $dm = $this->get('doctrine.odm.mongodb.document_manager');
 
-        $form = $this->createForm(new TattlType(), new Tattl);
+        $form = $this->createForm(new TattlType(), new Tattl());
 
         $form->bindRequest($this->getRequest());
 
@@ -53,11 +63,14 @@ class DefaultController extends Controller
             $dm->flush();
 
             //return $this->redirect(...);
+        } else {
+            return $form->getErrors();
         }
 
-        return $this->render(
-                'spocodeTattlrBundle:Tattl:submitTattl.html.twig',
-                array('form' => $form->createView())
-            );
+        //return $this->render(
+        //        'spocodeTattlrBundle:Tattl:submitTattl.html.twig',
+        //        array('form' => $form->createView())
+        //    );
+        return new \Symfony\Component\HttpFoundation\Response("New Tattl: ". $tattl->getId());
     }
 }
