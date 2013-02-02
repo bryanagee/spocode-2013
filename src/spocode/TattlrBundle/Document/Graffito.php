@@ -1,6 +1,5 @@
 <?php
-
-namespace spocode\TattlrBundle\Entity;
+namespace spocode\TattlrBundle\Document;
 
 class Graffito extends Tattl
 {
