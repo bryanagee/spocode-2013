@@ -19,7 +19,10 @@
         "jms/security-extra-bundle": "1.2.*",
         "jms/di-extra-bundle": "1.1.*",
         "kriswallsmith/assetic": "1.1.*@dev",
-        "hwi/oauth-bundle": "dev-master"
+        "hwi/oauth-bundle": "dev-master",
+        "doctrine/mongodb-odm-bundle": "3.0.*",
+        "doctrine/mongodb-odm": "1.0.*",
+        "doctrine/mongodb": "1.0.*"
     },
     "scripts": {
         "post-install-cmd": [
@@ -38,5 +41,6 @@
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web"
-    }
+    },
+    "minimum-stability": "dev"
 }
