@@ -72,6 +72,6 @@ class DefaultController extends Controller
         //        'spocodeTattlrBundle:Tattl:submitTattl.html.twig',
         //        array('form' => $form->createView())
         //    );
-        return new \Symfony\Component\HttpFoundation\Response("<h3>Thank you for telling on your city!!</h3>");
+        return $this->redirect('http://www.unleashedcms.com/tattlr/thanks.png');
     }
 }
