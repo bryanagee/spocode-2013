@@ -15,19 +15,19 @@ class DefaultController extends Controller
      * @Route("/tattls")
      * @Template()
      */
-    public function indexAction($tattlType)
+    public function indexAction()
     {
         $dm = $this->get('doctrine.odm.mongodb.document_manager');
-        if ("Tattl" == $tattlType) {
-            $tattls = $dm->getRepository('Tattl');
-        } else {
-            $tattls = $dm->getRepository('Tattl')->findBy(array('type' => $tattlType));
-        }
+        //if ("Tattl" == $tattlType) {
+        //    $tattls = $dm->getRepository('Tattl');
+        //} else {
+            $tattls = $dm->getRepository('Tattl')->find();
+        //}
 
-        $tableRows = array();
-        foreach ($tattls as $tattl) {
-
-        }
+       return $this->render(
+            'spocodeTattlrBundle:Tattl:tattlList.html.twig',
+            array('tattls' => $tattls)
+        );
 
     }
 
@@ -47,13 +47,13 @@ class DefaultController extends Controller
 
      /**
      * @Route("/tattl")
-     * @Method({"POST"})
+     * @Method({"POST","GET" })
      */
     public function postTattl()
     {
         $dm = $this->get('doctrine.odm.mongodb.document_manager');
 
-        $form = $this->createForm(new TattlType(), new Tattl());
+        $form = $this->createForm(new TattlType(), new Tattl(),array('csrf_protection' => false));
 
         $form->bindRequest($this->getRequest());
 
@@ -72,6 +72,6 @@ class DefaultController extends Controller
         //        'spocodeTattlrBundle:Tattl:submitTattl.html.twig',
         //        array('form' => $form->createView())
         //    );
-        return new \Symfony\Component\HttpFoundation\Response("New Tattl: ". $tattl->getId());
+        return new \Symfony\Component\HttpFoundation\Response("<h3>Thank you for telling on your city!!</h3>");
     }
 }
