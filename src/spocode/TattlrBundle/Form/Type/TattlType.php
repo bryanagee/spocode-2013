@@ -8,14 +8,14 @@ class TattlType extends AbstractType
 {
     public function buildForm(\Symfony\Component\Form\FormBuilderInterface $builder, array $options)
     {
-        $builder->add('type','choice',['choices' => [
+        $builder->add('type','choice',array('choices' => array(
             'AbandonedCar'  => 'AbandonedCar',
             'Flood'         => 'Flood',
             'Graffito'      => 'Graffito',
             'Pothole'       =>'Pothole',
             'SignalOut'     => 'SignalOut',
-            ]]);
-        $builder->add('datetime','datetime',['input' => 'timestamp']);
+            )));
+        $builder->add('datetime','datetime',array('input' => 'timestamp'));
         $builder->add('image', 'file');
         $builder->add('geoLattitude','number');
         $builder->add('geoLongitude','number');

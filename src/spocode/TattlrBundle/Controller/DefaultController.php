@@ -21,9 +21,10 @@ class DefaultController extends Controller
         if ("Tattl" == $tattlType) {
             $tattls = $dm->getRepository('Tattl');
         } else {
-            $tattls = $dm->getRepository('Tattl')->findBy(['type' => $tattlType]);
+            $tattls = $dm->getRepository('Tattl')->findBy(array('type' => $tattlType));
         }
 
+        $tableRows = array();
         foreach ($tattls as $tattl) {
 
         }
