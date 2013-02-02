@@ -6,7 +6,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 /**
  * @MongoDB\Document
  */
-class Flood extends Tattl
+class AbandonedCar extends Tattl
 {
 
 }

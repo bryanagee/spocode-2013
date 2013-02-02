@@ -5,6 +5,11 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
  * @MongoDB\Document
+ * @MongoDB\InheritanceType("SINGLE_COLLECTION")
+ * @MongoDB\DiscriminatorField(fieldName="type")
+ * @MongoDB\DiscriminatorMap({"abandondedCar"="AbandonedCar",
+ *  "flood"="Flood", "graffito"="Graffito", "pothole","Pothole",
+ *  "signalOut"="SignalOut"})
  */
 class Tattl
 {
