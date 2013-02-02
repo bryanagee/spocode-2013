@@ -22,7 +22,7 @@ class Tattl
     /**
      * @MongoDB\Timestamp
      */
-    protected $dateTime;
+    protected $datetime;
 
     /**
      * @MongoDB\File
@@ -67,9 +67,9 @@ class Tattl
      * @param timestamp $dateTime
      * @return \Tattl
      */
-    public function setDateTime($dateTime)
+    public function setDatetime($datetime)
     {
-        $this->dateTime = $dateTime;
+        $this->datetime = $datetime;
         return $this;
     }
 
@@ -78,9 +78,9 @@ class Tattl
      *
      * @return timestamp $dateTime
      */
-    public function getDateTime()
+    public function getDatetime()
     {
-        return $this->dateTime;
+        return $this->datetime;
     }
 
     /**

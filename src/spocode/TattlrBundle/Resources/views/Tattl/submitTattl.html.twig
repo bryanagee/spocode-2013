@@ -1,0 +1,6 @@
+
+<form action="/{{app.request.get('tattlType')}}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+
+    <input type="submit" />
+</form>
