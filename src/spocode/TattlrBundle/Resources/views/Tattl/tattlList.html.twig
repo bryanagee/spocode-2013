@@ -1,0 +1,8 @@
+<table>
+{% for tattl in tattls %}
+        <tr>
+            <td>{{tattl.id}}</td>
+            <td><a href='http://maps.google.com?q={{ tattl.lattitude }},{{ tattl.longitude}}'>Map of {{ tattl.type }}</a></td>
+        </tr>
+{% endfor %}
+</table>
