@@ -47,7 +47,7 @@ class DefaultController extends Controller
 
      /**
      * @Route("/tattl")
-     * @Method({"POST","GET" })
+     * @Method({"POST","GET"})
      */
     public function postTattl()
     {
